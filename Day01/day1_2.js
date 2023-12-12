@@ -3,7 +3,7 @@ const readline = require('readline')
 
 var total = 0
 
-const numberArray = [['one'],['two'],['three'], ['four'], ['five'], ['six'], ['seven'], ['eight'], ['nine'], ['0 '],['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8'],['9']]
+const numberArray = [ ['one'], ['two'], ['three'], ['four'], ['five'], ['six'], ['seven'], ['eight'], ['nine'], ['0'],['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8'],['9'],['zero'],]
 
 function findFirstNumber(inputString) {
     const match = inputString.match(/\d/)
@@ -11,7 +11,7 @@ function findFirstNumber(inputString) {
     return match ? parseInt(match[0],10) : null
 }
 
-fs.readFile('.\\Day01\\input_test.txt', function (err, data) {
+fs.readFile('input_test.txt', function (err, data) {
     console.log(`Starting`)
     
     var array = data.toString().split("\r\n")
@@ -21,7 +21,8 @@ fs.readFile('.\\Day01\\input_test.txt', function (err, data) {
     for (i = 0; i<array.length; i++){
         var resultArray = []    
         console.log(array[i])
-
+        var temp = ''
+        var temp2 = ''
         //search array[i] for the various numbers zero, one, two, three, four, five, six, seven, eight, nine, 0-9
         for (j=0; j<numberArray.length; j++){
             //console.log(numberArray[j])
@@ -37,11 +38,16 @@ fs.readFile('.\\Day01\\input_test.txt', function (err, data) {
             }
             resultArray.sort((a,b) => a[0]-b[0])
             //console.log(resultArray[0], resultArray[resultArray.length-1])
-            var temp = resultArray[0]
-            var temp2 = resultArray[resultArray.length-1]
+            temp = resultArray[0]
+            temp2 = resultArray[resultArray.length-1]
             
-            console.log(temp)
-        }        
+            
+        } 
+
+        var Number = temp[1]+''+temp2[1]
+        
+        console.log(Number)
+        total += parseInt(Number)
     }
 
     console.log(`Finsihed TOTAL = ${total}`)

@@ -1,5 +1,4 @@
 const fs = require('fs')
-const readline = require('readline')
 
 var total = 0
 
@@ -10,7 +9,9 @@ function findFirstNumber(inputString) {
 }
 
 
-fs.readFile('.\\Day01\\input.txt', function (err, data) {
+fs.readFile('input.txt', function (err, data) {
+    if (err) throw err
+
     console.log(`Starting`)
     
     var array = data.toString().split("\r\n")
